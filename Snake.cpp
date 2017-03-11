@@ -1,4 +1,4 @@
-//////////////Game Snake
+/////////////Game Snake bbbbbbbbbbbbbbbbbbbbbbbbb
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 #include <SFML/Graphics.hpp>
 #include <time.h>
@@ -7,12 +7,12 @@
 
 using namespace sf;
 
-int N = 35, M = 25; //// задание размеров поля
+int N = 35, M = 25; //// Г§Г Г¤Г Г­ГЁГҐ Г°Г Г§Г¬ГҐГ°Г®Гў ГЇГ®Г«Гї
 int scale = 25;
 int w = scale*N;
 int h = scale*M;
 
-int direction = 2, size = 4; //// начальное направление движения, начальный размер змейки
+int direction = 2, size = 4; //// Г­Г Г·Г Г«ГјГ­Г®ГҐ Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г¤ГўГЁГ¦ГҐГ­ГЁГї, Г­Г Г·Г Г«ГјГ­Г»Г© Г°Г Г§Г¬ГҐГ° Г§Г¬ГҐГ©ГЄГЁ
 
 struct Snake {
 public:
@@ -40,7 +40,7 @@ public:
 
 void Rules::game() {
 	if ((life == true) && (start == true)) {
-		for (int i = size; i > 0; --i)       //// алгоритм передвижения змейки
+		for (int i = size; i > 0; --i)       //// Г Г«ГЈГ®Г°ГЁГІГ¬ ГЇГҐГ°ГҐГ¤ГўГЁГ¦ГҐГ­ГЁГї Г§Г¬ГҐГ©ГЄГЁ
 		{
 			snake[i].x = snake[i - 1].x;
 			snake[i].y = snake[i - 1].y;
@@ -51,7 +51,7 @@ void Rules::game() {
 		if (direction == 2) snake[0].x += 1;
 		if (direction == 3) snake[0].y -= 1;
 
-		for (int i = 1; i < N; i++)                       //// проверка на столкновение со стенами
+		for (int i = 1; i < N; i++)                       //// ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г±Г® Г±ГІГҐГ­Г Г¬ГЁ
 			if ((snake[0].y == 0) && (snake[0].x == i))
 				life = false;
 
@@ -71,7 +71,7 @@ void Rules::game() {
 			if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) life = false;
 
 		if (life == true) {
-			if ((snake[0].x == eda.x) && (snake[0].y == eda.y)) { //// условие роста змейки
+			if ((snake[0].x == eda.x) && (snake[0].y == eda.y)) { //// ГіГ±Г«Г®ГўГЁГҐ Г°Г®Г±ГІГ  Г§Г¬ГҐГ©ГЄГЁ
 				size++;
 				spawn();
 			}
@@ -79,7 +79,7 @@ void Rules::game() {
 	}
 }
 
-void Rules::spawn() {              //// генерация еды
+void Rules::spawn() {              //// ГЈГҐГ­ГҐГ°Г Г¶ГЁГї ГҐГ¤Г»
 	if (rules.start) {
 		eda.x = rand() % N;
 		eda.y = rand() % M;
@@ -183,14 +183,14 @@ bool startgame() {
 
 
 	Clock clock;
-	float timer = 0, delay = 0.06; //// скорость игры
+	float timer = 0, delay = 0.06; //// Г±ГЄГ®Г°Г®Г±ГІГј ГЁГЈГ°Г»
 
 	std::ofstream fout;
 	std::ifstream fin;
 	int record;
 	int max = 0;
 
-	snake[0].x = 5;         //// начальное положение змейки
+	snake[0].x = 5;         //// Г­Г Г·Г Г«ГјГ­Г®ГҐ ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ Г§Г¬ГҐГ©ГЄГЁ
 	snake[0].y = M / 2;
 
 	rules.spawn();
@@ -213,7 +213,7 @@ bool startgame() {
 
 		if (Keyboard::isKeyPressed(Keyboard::Escape)) { window.close(); }
 
-		if ((!rules.life) && (rules.start)) {                //// рестарт игры
+		if ((!rules.life) && (rules.start)) {                //// Г°ГҐГ±ГІГ Г°ГІ ГЁГЈГ°Г»
 			if (Keyboard::isKeyPressed(Keyboard::R)) {
 				window.clear();
 				rules.life = true;
@@ -223,7 +223,7 @@ bool startgame() {
 			}
 		}
 
-		if (rules.life) {                                      //// задание направления движения змейки
+		if (rules.life) {                                      //// Г§Г Г¤Г Г­ГЁГҐ Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГї Г¤ГўГЁГ¦ГҐГ­ГЁГї Г§Г¬ГҐГ©ГЄГЁ
 			if (Keyboard::isKeyPressed(Keyboard::Up))
 				if ((direction != 0) && (rules.turn)) {
 					direction = 3;
@@ -249,7 +249,7 @@ bool startgame() {
 
 		if (timer > delay) { timer = 0; rules.game(); rules.turn = true; }
 
-		////////////////////////////////////// Прорисовка объектов  //////////////////////////////////////////////////////
+		////////////////////////////////////// ГЏГ°Г®Г°ГЁГ±Г®ГўГЄГ  Г®ГЎГєГҐГЄГІГ®Гў  //////////////////////////////////////////////////////
 		window.clear();
 
 		for (int i = 1; i < N - 1; i++)
@@ -330,22 +330,22 @@ bool startgame() {
 			textgameover.setString("GAME OVER");
 			textgameover.setPosition(300, 100);
 			window.draw(textgameover);
-			textEndScore.setString("Ваш результат: " + playerScoreString.str());
+			textEndScore.setString("Г‚Г Гё Г°ГҐГ§ГіГ«ГјГІГ ГІ: " + playerScoreString.str());
 			textEndScore.setPosition(300, 225);
 			window.draw(textEndScore);
-			textRestart.setString("Для рестарта нажмите «R»");
+			textRestart.setString("Г„Г«Гї Г°ГҐГ±ГІГ Г°ГІГ  Г­Г Г¦Г¬ГЁГІГҐ В«RВ»");
 			textRestart.setPosition(220, 325);
 			window.draw(textRestart);
-			textexit.setString("Выход «Escape»");
+			textexit.setString("Г‚Г»ГµГ®Г¤ В«EscapeВ»");
 			textexit.setPosition(315, 425);
 			window.draw(textexit);
 		}
 
 		if (!rules.start) {
-			textstart.setString("Начать игру «Tab»");
+			textstart.setString("ГЌГ Г·Г ГІГј ГЁГЈГ°Гі В«TabВ»");
 			textstart.setPosition(290, 250);
 			window.draw(textstart);
-			textexit.setString("Выход «Escape»");
+			textexit.setString("Г‚Г»ГµГ®Г¤ В«EscapeВ»");
 			textexit.setPosition(315, 330);
 			window.draw(textexit);
 		}
